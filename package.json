@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Jorge Alegretti <jorgeluiz.b.alegretti@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
+  },
   "devDependencies": {
     "@types/node": "^15.12.2",
     "@typescript-eslint/parser": "^4.26.1",
@@ -13,7 +16,16 @@
     "eslint-plugin-import-helpers": "^1.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.1",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.26.1",
