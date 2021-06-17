@@ -1,8 +1,9 @@
 import admin from "firebase-admin"
-
-import credential from "../../../../../../alfred-ignite-firebase-admin.json"
+import { config } from "dotenv"
 
 import { IAuthProvider } from "../IAuthProvider";
+
+config()
 
 interface IUserDTO {
   email: string
@@ -11,15 +12,24 @@ interface IUserDTO {
 
 class FirebaseAuthProvider implements IAuthProvider {
 
-  async verifyToken(token: string): Promise<IUserDTO>{
-    const app = admin.initializeApp({
-      credential: admin.credential.cert(`${credential}`)
+  private CREDENTIAL_PATH = process.env.CREDENTIAL_PATH
+
+  private app: admin.app.App
+  private auth: admin.auth.Auth
+
+  constructor(){
+    this.app = admin.initializeApp({
+      credential: admin.credential.cert(this.CREDENTIAL_PATH)
     })
 
+    this.auth = admin.auth(this.app)
+  }
+
+  async verifyToken(token: string): Promise<IUserDTO>{
     const {
       email,
       uid
-    } = await app.auth().verifyIdToken(token)
+    } = await this.auth.verifyIdToken(token)
 
     return {
       email,
@@ -28,13 +38,10 @@ class FirebaseAuthProvider implements IAuthProvider {
   }
 
   async deleteUser(uid: string): Promise<void>{
-    const app = admin.initializeApp({
-      credential: admin.credential.cert(`${credential}`)
-    })
-
-    await app.auth().deleteUser(uid)
+    await this.auth.deleteUser(uid)
 
     return
   }
 }
- export { FirebaseAuthProvider }
+
+export { FirebaseAuthProvider }
