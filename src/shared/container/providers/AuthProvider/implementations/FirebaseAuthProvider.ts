@@ -26,5 +26,15 @@ class FirebaseAuthProvider implements IAuthProvider {
       uid
     }
   }
+
+  async deleteUser(uid: string): Promise<void>{
+    const app = admin.initializeApp({
+      credential: admin.credential.cert(`${credential}`)
+    })
+
+    await app.auth().deleteUser(uid)
+
+    return
+  }
 }
  export { FirebaseAuthProvider }
