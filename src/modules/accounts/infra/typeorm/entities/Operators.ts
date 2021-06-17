@@ -17,7 +17,7 @@ class Operators {
   id: string;
 
   @ManyToOne(() => Condominiums)
-  @JoinColumn({ name: "condominiums_id" })
+  @JoinColumn({ name: "condominium_id" })
   condominium: Condominiums;
 
   @Column()
@@ -30,7 +30,7 @@ class Operators {
   firebase_id: string;
 
   @Column()
-  condominiums_id: string;
+  condominium_id: string;
 
   @CreateDateColumn()
   created_at: Date;

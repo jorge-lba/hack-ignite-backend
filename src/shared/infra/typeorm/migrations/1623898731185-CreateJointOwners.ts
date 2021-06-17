@@ -34,7 +34,7 @@ export class CreateJointOwners1623898731185 implements MigrationInterface {
             type: "decimal",
           },
           {
-            name: "condominiums_id",
+            name: "condominium_id",
             type: "uuid",
           },
           {
@@ -53,7 +53,7 @@ export class CreateJointOwners1623898731185 implements MigrationInterface {
             name: "FkJointOwners",
             referencedTableName: "condominiums",
             referencedColumnNames: ["id"],
-            columnNames: ["condominiums_id"],
+            columnNames: ["condominium_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },

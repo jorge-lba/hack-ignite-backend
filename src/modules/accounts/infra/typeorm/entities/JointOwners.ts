@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+
 import { Condominiums } from "./Condominiums";
 
 @Entity()
@@ -16,7 +17,7 @@ class JointOwners {
   id: string;
 
   @ManyToOne(() => Condominiums)
-  @JoinColumn({ name: "condominiums_id" })
+  @JoinColumn({ name: "condominium_id" })
   condominium: Condominiums;
 
   @Column()
@@ -35,7 +36,7 @@ class JointOwners {
   number: number;
 
   @Column()
-  condominiums_id: string;
+  condominium_id: string;
 
   @CreateDateColumn()
   created_at: Date;

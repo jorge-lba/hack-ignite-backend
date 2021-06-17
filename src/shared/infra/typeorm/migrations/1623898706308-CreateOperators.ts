@@ -24,7 +24,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "condominiums_id",
+            name: "condominium_id",
             type: "uuid",
           },
           {
@@ -43,7 +43,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
             name: "FkOperators",
             referencedTableName: "condominiums",
             referencedColumnNames: ["id"],
-            columnNames: ["condominiums_id"],
+            columnNames: ["condominium_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },
