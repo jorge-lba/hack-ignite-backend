@@ -1,5 +1,5 @@
 interface IAuthProvider {
-  verifyToken:<T>() => Promise<T>
+  verifyToken:(token: string) => Promise<any>
 }
 
 export { IAuthProvider }
