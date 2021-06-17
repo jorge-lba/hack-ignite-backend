@@ -5,7 +5,8 @@
   "author": "Jorge Alegretti <jorgeluiz.b.alegretti@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -34,6 +35,8 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "firebase-admin": "^9.9.0"
+    "firebase-admin": "^9.9.0",
+    "typeorm": "^0.2.34",
+    "uuid": "^8.3.2"
   }
 }
