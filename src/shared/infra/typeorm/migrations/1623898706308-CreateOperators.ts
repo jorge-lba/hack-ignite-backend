@@ -40,7 +40,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "FkCondominium",
+            name: "FkOperators",
             referencedTableName: "condominiums",
             referencedColumnNames: ["id"],
             columnNames: ["condominiums_id"],
@@ -52,5 +52,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable("operators");
+  }
 }

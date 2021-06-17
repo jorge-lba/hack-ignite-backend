@@ -4,7 +4,7 @@ export class CreateJointOwners1623898731185 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "operators",
+        name: "jointOwners",
         columns: [
           {
             name: "id",
@@ -50,7 +50,7 @@ export class CreateJointOwners1623898731185 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "FkCondominium",
+            name: "FkJointOwners",
             referencedTableName: "condominiums",
             referencedColumnNames: ["id"],
             columnNames: ["condominiums_id"],
@@ -62,5 +62,7 @@ export class CreateJointOwners1623898731185 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable("jointOwners");
+  }
 }
