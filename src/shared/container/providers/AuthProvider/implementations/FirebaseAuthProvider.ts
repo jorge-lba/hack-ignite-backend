@@ -1,47 +1,41 @@
-import admin from "firebase-admin"
-import { config } from "dotenv"
+import { config } from "dotenv";
+import admin from "firebase-admin";
 
 import { IAuthProvider } from "../IAuthProvider";
 
-config()
+config();
 
 interface IUserDTO {
-  email: string
-  uid: string
+  email: string;
+  uid: string;
 }
 
 class FirebaseAuthProvider implements IAuthProvider {
+  private CREDENTIAL_PATH = process.env.CREDENTIAL_PATH;
 
-  private CREDENTIAL_PATH = process.env.CREDENTIAL_PATH
+  private app: admin.app.App;
+  private auth: admin.auth.Auth;
 
-  private app: admin.app.App
-  private auth: admin.auth.Auth
-
-  constructor(){
+  constructor() {
     this.app = admin.initializeApp({
-      credential: admin.credential.cert(this.CREDENTIAL_PATH)
-    })
+      credential: admin.credential.cert(this.CREDENTIAL_PATH),
+    });
 
-    this.auth = admin.auth(this.app)
+    this.auth = admin.auth(this.app);
   }
 
-  async verifyToken(token: string): Promise<IUserDTO>{
-    const {
-      email,
-      uid
-    } = await this.auth.verifyIdToken(token)
+  async verifyToken(token: string): Promise<IUserDTO> {
+    const { email, uid } = await this.auth.verifyIdToken(token);
 
     return {
       email,
-      uid
-    }
+      uid,
+    };
   }
 
-  async deleteUser(uid: string): Promise<void>{
-    await this.auth.deleteUser(uid)
-
-    return
+  async deleteUser(uid: string): Promise<void> {
+    await this.auth.deleteUser(uid);
   }
 }
 
-export { FirebaseAuthProvider }
+export { FirebaseAuthProvider };
