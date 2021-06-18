@@ -14,6 +14,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
           {
             name: "name",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "email",
@@ -22,6 +23,7 @@ export class CreateOperators1623898706308 implements MigrationInterface {
           {
             name: "firebase_id",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "condominium_id",

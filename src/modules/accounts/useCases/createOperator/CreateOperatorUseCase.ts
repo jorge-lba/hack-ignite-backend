@@ -14,7 +14,7 @@ class CreateOperatorUseCase {
   constructor(
     @inject("OperatorsRepository")
     private operatorsRepository: IOperatorsRepository,
-    @inject("CondominiumsRepository")
+    @inject("CondominiumRepository")
     private condominiumsRepository: ICondominiumRepository
   ) {}
 
