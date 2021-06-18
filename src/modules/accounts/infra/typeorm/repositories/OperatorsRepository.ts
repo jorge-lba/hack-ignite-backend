@@ -28,6 +28,15 @@ class OperatorsRepository implements IOperatorsRepository {
 
     return operator;
   }
+  async updateByEmail(email: string, { name, firebase_id }): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update()
+      .set({ name, firebase_id })
+      .where("email = :email")
+      .setParameters({ email })
+      .execute();
+  }
 }
 
 export { OperatorsRepository };
