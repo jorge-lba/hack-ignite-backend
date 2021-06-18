@@ -21,13 +21,13 @@ class Operators {
   condominium: Condominiums;
 
   @Column()
-  name: string;
+  name?: string;
 
   @Column()
   email: string;
 
   @Column()
-  firebase_id: string;
+  firebase_id?: string;
 
   @Column()
   condominium_id: string;
