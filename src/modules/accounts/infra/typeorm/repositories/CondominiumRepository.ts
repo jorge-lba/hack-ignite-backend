@@ -13,15 +13,13 @@ class CondominiumRepository implements ICondominiumRepository {
   }
 
   async create({
-    name,
-    email,
-    cnpj,
     firebase_id,
+    email,
+    name,
   }: ICreateCondominiumDTO): Promise<void> {
     const condominium = this.repository.create({
-      name,
       email,
-      cnpj,
+      name,
       firebase_id,
     });
 
@@ -29,13 +27,22 @@ class CondominiumRepository implements ICondominiumRepository {
   }
 
   async findAll(): Promise<Condominiums[]> {
-    const all = await this.repository.find();
-
-    return all;
+    const condominiums = await this.repository.find();
+    return condominiums;
   }
+
   async findByEmail(email: string): Promise<Condominiums> {
-    const condominium = await this.repository.findOne({ email });
+    const condominium = await this.repository.findOne({
+      email,
+    });
+
     return condominium;
+  }
+
+  async delete(condominium_id: string): Promise<void> {
+    await this.repository.delete({
+      id: condominium_id,
+    });
   }
 }
 
