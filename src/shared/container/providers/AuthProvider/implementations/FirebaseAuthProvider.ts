@@ -7,7 +7,7 @@ config();
 
 interface IUserDTO {
   email: string;
-  uid: string;
+  firebase_id: string;
 }
 
 class FirebaseAuthProvider implements IAuthProvider {
@@ -25,16 +25,16 @@ class FirebaseAuthProvider implements IAuthProvider {
   }
 
   async verifyToken(token: string): Promise<IUserDTO> {
-    const { email, uid } = await this.auth.verifyIdToken(token);
+    const { email, uid: firebase_id } = await this.auth.verifyIdToken(token);
 
     return {
       email,
-      uid,
+      firebase_id,
     };
   }
 
-  async deleteUser(uid: string): Promise<void> {
-    await this.auth.deleteUser(uid);
+  async deleteUser(firebase_id: string): Promise<void> {
+    await this.auth.deleteUser(firebase_id);
   }
 }
 

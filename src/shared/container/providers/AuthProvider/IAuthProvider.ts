@@ -1,11 +1,11 @@
 interface IUserDTO {
   email: string;
-  uid: string;
+  firebase_id: string;
 }
 
 interface IAuthProvider {
   verifyToken: (token: string) => Promise<IUserDTO>;
-  deleteUser: (uid: string) => Promise<void>;
+  deleteUser: (firebase_id: string) => Promise<void>;
 }
 
 export { IAuthProvider };
