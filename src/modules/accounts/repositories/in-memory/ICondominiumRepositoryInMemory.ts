@@ -26,12 +26,15 @@ class CondominiumRepositoryInMemory implements ICondominiumRepository {
     const all = await this.condominiums;
     return all;
   }
+  async findByEmail(email: string): Promise<Condominiums> {
+    const result = await this.condominiums.find((cond) => cond.email === email);
 
-  async delete(id: string): Promise<Condominiums> {
+    return result;
+  }
+
+  async delete(id: string): Promise<void> {
     const index = this.condominiums.findIndex((cond) => cond.id === id);
-    const [condominium] = await this.condominiums.splice(index, 1);
-
-    return condominium;
+    await this.condominiums.splice(index, 1);
   }
 }
 
