@@ -1,9 +1,13 @@
 import { inject, injectable } from "tsyringe";
 
-import { ICreateOperatorDTO } from "@modules/accounts/dtos/ICreateOperatorDTO";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
 import { AppError } from "@shared/errors/AppError";
+
+interface IRequest {
+  user_email: string;
+  email: string;
+}
 
 @injectable()
 class CreateOperatorUseCase {
@@ -14,7 +18,7 @@ class CreateOperatorUseCase {
     private condominiumsRepository: ICondominiumRepository
   ) {}
 
-  async execute({ email, condominium_id }: ICreateOperatorDTO): Promise<void> {
+  async execute({ email, user_email }: IRequest): Promise<void> {
     const operatorAlreadyExists = await this.operatorsRepository.findByEmail(
       email
     );
@@ -30,9 +34,13 @@ class CreateOperatorUseCase {
       throw new AppError("Email is being used!");
     }
 
+    const condominium = await this.condominiumsRepository.findByEmail(
+      user_email
+    );
+
     await this.operatorsRepository.create({
       email,
-      condominium_id,
+      condominium_id: condominium.id,
     });
   }
 }
