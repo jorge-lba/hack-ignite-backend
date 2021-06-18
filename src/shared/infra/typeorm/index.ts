@@ -29,7 +29,6 @@ async function connection(): Promise<Connection> {
       })
     : defaultOptions;
 
-  console.log(dbOptions);
   return createConnection(dbOptions);
 }
 
