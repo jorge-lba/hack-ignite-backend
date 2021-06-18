@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import admin from "firebase-admin";
+import { singleton } from "tsyringe";
 
 import { IAuthProvider } from "../IAuthProvider";
 
@@ -10,6 +11,7 @@ interface IUserDTO {
   firebase_id: string;
 }
 
+@singleton()
 class FirebaseAuthProvider implements IAuthProvider {
   private CREDENTIAL_PATH = process.env.CREDENTIAL_PATH;
 
