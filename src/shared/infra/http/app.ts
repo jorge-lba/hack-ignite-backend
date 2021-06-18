@@ -3,6 +3,8 @@ import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 
 import "express-async-errors";
+import { AppError } from "@shared/errors/AppError";
+
 import { router } from "./routes";
 
 import "@shared/container";
@@ -16,7 +18,7 @@ app.use(router);
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
-    if (err instanceof Error) {
+    if (err instanceof AppError) {
       return response.status(500).json({
         message: err.message,
       });
@@ -24,7 +26,7 @@ app.use(
 
     return response.status(400).json({
       status: "error",
-      message: `Interval server error = ${err}`,
+      message: `Interval server error = ${err.message}`,
     });
   }
 );
