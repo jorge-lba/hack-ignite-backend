@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { FirebaseAuthProvider } from "@shared/container/providers/AuthProvider/implementations/FirebaseAuthProvider";
+import { AppError } from "@shared/errors/AppError";
 
 export async function ensureAuthenticated(
   request: Request,
@@ -10,6 +11,8 @@ export async function ensureAuthenticated(
 ): Promise<void> {
   const authHeader = request.headers.authorization;
   const authTokenProvider = container.resolve(FirebaseAuthProvider);
+
+  if (!authHeader) throw new AppError("Token missing", 401);
 
   const [, token] = authHeader.split("");
 
@@ -23,6 +26,6 @@ export async function ensureAuthenticated(
 
     next();
   } catch (error) {
-    throw new Error("Invalid token!");
+    throw new AppError("Invalid token!", 401);
   }
 }
