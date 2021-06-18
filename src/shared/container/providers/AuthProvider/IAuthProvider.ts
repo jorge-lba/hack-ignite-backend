@@ -1,6 +1,11 @@
-interface IAuthProvider {
-  verifyToken:(token: string) => Promise<any>
-  deleteUser:(uid: string) => Promise<any>
+interface IUserDTO {
+  email: string;
+  uid: string;
 }
 
-export { IAuthProvider }
+interface IAuthProvider {
+  verifyToken: (token: string) => Promise<IUserDTO>;
+  deleteUser: (uid: string) => Promise<void>;
+}
+
+export { IAuthProvider };
