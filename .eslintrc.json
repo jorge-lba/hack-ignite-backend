@@ -22,7 +22,7 @@
   ],
   "rules": {
     "camelcase": "off",
-    "import/no-unresolved": "warn",
+    "import/no-unresolved": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -64,10 +64,8 @@
   },
   "settings": {
       "import/resolver": {
-        "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx"]
-        }
+        "typescript": {}
         
-      }
+      } 
   }
 }
