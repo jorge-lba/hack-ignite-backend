@@ -4,6 +4,7 @@ import { Operators } from "../infra/typeorm/entities/Operators";
 interface IOperatorsRepository {
   create: ({ email, condominium_id }: ICreateOperatorDTO) => Promise<void>;
   findByEmail: (email: string) => Promise<Operators>;
+  listByCondominiumId: (condominium_id: string) => Promise<Operators[]>;
 }
 
 export { IOperatorsRepository };
