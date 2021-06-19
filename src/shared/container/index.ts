@@ -6,6 +6,8 @@ import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositor
 import { OperatorsRepository } from "@modules/accounts/infra/typeorm/repositories/OperatorsRepository";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
+import { IAuthProvider } from "./providers/AuthProvider/IAuthProvider";
+import { FirebaseAuthProvider } from "./providers/AuthProvider/implementations/FirebaseAuthProvider";
 
 container.registerSingleton<IOperatorsRepository>(
   "OperatorsRepository",
@@ -15,4 +17,9 @@ container.registerSingleton<IOperatorsRepository>(
 container.registerSingleton<ICondominiumRepository>(
   "CondominiumRepository",
   CondominiumRepository
+);
+
+container.registerSingleton<IAuthProvider>(
+  "AuthProvider",
+  FirebaseAuthProvider
 );
