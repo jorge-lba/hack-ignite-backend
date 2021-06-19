@@ -9,6 +9,8 @@ import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsR
 import { IAuthProvider } from "./providers/AuthProvider/IAuthProvider";
 import { FirebaseAuthProvider } from "./providers/AuthProvider/implementations/FirebaseAuthProvider";
 
+import { FirebaseAdmin } from "./firebase/FirebaseAdmin";
+
 container.registerSingleton<IOperatorsRepository>(
   "OperatorsRepository",
   OperatorsRepository
@@ -19,7 +21,11 @@ container.registerSingleton<ICondominiumRepository>(
   CondominiumRepository
 );
 
+
 container.registerSingleton<IAuthProvider>(
   "AuthProvider",
   FirebaseAuthProvider
 );
+
+container.registerSingleton("FirebaseAdmin", FirebaseAdmin);
+

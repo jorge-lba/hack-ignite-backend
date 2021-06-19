@@ -1,6 +1,7 @@
 import { config } from "dotenv";
-import admin from "firebase-admin";
-import { singleton } from "tsyringe";
+import { inject, singleton } from "tsyringe";
+
+import { IFirebaseAdmin } from "@shared/container/firebase/IFirebaseAdmin";
 
 import { IAuthProvider } from "../IAuthProvider";
 
@@ -13,18 +14,12 @@ interface IUserDTO {
 
 @singleton()
 class FirebaseAuthProvider implements IAuthProvider {
-  private CREDENTIAL_PATH = process.env.CREDENTIAL_PATH;
+  constructor(
+    @inject("FirebaseAdmin")
+    private firebaseAdmin: IFirebaseAdmin
+  ) {}
 
-  private app: admin.app.App;
-  private auth: admin.auth.Auth;
-
-  constructor() {
-    this.app = admin.initializeApp({
-      credential: admin.credential.cert(this.CREDENTIAL_PATH),
-    });
-
-    this.auth = admin.auth(this.app);
-  }
+  private auth = this.firebaseAdmin.auth;
 
   async verifyToken(token: string): Promise<IUserDTO> {
     const { email, uid: firebase_id } = await this.auth.verifyIdToken(token);
