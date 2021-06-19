@@ -8,12 +8,8 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev": "env NODE_ENV=test ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-<<<<<<< HEAD
     "start":"node dist/shared/infra/http/server.js",
-=======
     "dev:win": "set NODE_ENV=test ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-    "start": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
->>>>>>> 2d723f230d3cbebfdc9daf97882f69b19a10ca6f
     "seed:admin": "ts-node src/shared/infra/typeorm/seeds/condominium.ts"
   },
   "devDependencies": {

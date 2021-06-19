@@ -6,10 +6,10 @@
   "password": "z0FZliFtVKGlzUCPzqk7Td3CVgoOIsDB",
   "database": "tgvzzbwu",
   "migrations": [
-    "./dist/shared/infra/typeorm/migrations/**.{ts,js}"
+    "./dist/shared/infra/typeorm/migrations/**.js"
   ],
   "entities": [
-    "./dist/modules/*/infra/typeorm/entities/**.{ts, js}"
+    "./dist/modules/*/infra/typeorm/entities/**.js"
   ],
   "cli": {
     "migrationsDir": "./dist/shared/infra/typeorm/migrations"
