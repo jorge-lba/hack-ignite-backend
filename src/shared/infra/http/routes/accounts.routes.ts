@@ -1,13 +1,13 @@
 import { Router } from "express";
 
 import { CreateCondominiumController } from "@modules/accounts/useCases/createCondominium/CreateCondominiumController";
-import { CreateOperatorController } from "@modules/accounts/useCases/createOperator/CreateOperatorController";
-import { ListOperatorsController } from "@modules/accounts/useCases/listOperators/ListOperatorsController";
-import { FinishRegisterOperatorController } from "@modules/accounts/useCases/finishRegisterOperator/FinishRegisterOperatorController";
-import { DeleteOperatorController } from "@modules/accounts/useCases/deleteOperators/DeleteOperatorsController";
 import { CreateJointOwnerController } from "@modules/accounts/useCases/createJointOwner/CreateJointOwnerController";
+import { CreateOperatorController } from "@modules/accounts/useCases/createOperator/CreateOperatorController";
+import { DeleteOperatorController } from "@modules/accounts/useCases/deleteOperators/DeleteOperatorsController";
+import { FinishRegisterOperatorController } from "@modules/accounts/useCases/finishRegisterOperator/FinishRegisterOperatorController";
 import { ListJointOwnersController } from "@modules/accounts/useCases/listJointOwners/ListJointOwnerController";
 import { ListJointOwnersByIdController } from "@modules/accounts/useCases/listJointOwnersById/ListJointOwnersByIdController";
+import { ListOperatorsController } from "@modules/accounts/useCases/listOperators/ListOperatorsController";
 
 const accountsRoutes = Router();
 
