@@ -42,6 +42,11 @@ class JointOwnersRepository implements IJointOwnerRepository {
 
     return jointOwner;
   }
+  async findByPhone(phone: string): Promise<JointOwners> {
+    const jointOwner = await this.repository.findOne({ phone });
+
+    return jointOwner;
+  }
   async updateById(
     id: string,
     { name, phone, road, block, number }: ICreateJointOwnerDTO
