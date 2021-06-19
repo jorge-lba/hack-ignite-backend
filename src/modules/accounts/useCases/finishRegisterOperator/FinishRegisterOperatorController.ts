@@ -5,8 +5,7 @@ import { FinishRegisterOperatorUseCase } from "./FinishRegisterOperatorUseCase";
 
 class FinishRegisterOperatorController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { email } = request.params;
-    const { firebase_id } = request.user;
+    const { email, firebase_id } = request.user;
     const { name } = request.body;
 
     const finishRegisterUseCase = container.resolve(
