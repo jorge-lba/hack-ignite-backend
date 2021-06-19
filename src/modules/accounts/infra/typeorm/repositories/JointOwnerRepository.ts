@@ -5,7 +5,7 @@ import { IJointOwnerRepository } from "@modules/accounts/repositories/IJointOwne
 
 import { JointOwners } from "../entities/JointOwners";
 
-class JointOwnersRepository implements JointOwners {
+class JointOwnersRepository implements IJointOwnerRepository {
   private repository: Repository<JointOwners>;
 
   constructor() {
@@ -30,6 +30,34 @@ class JointOwnersRepository implements JointOwners {
     });
 
     await this.repository.save(jointOwner);
+  }
+
+  async listByCondominiumId(condominium_id: string): Promise<JointOwners[]> {
+    const jointOwner = await this.repository.find({ condominium_id });
+
+    return jointOwner;
+  }
+  async findById(id: string): Promise<JointOwners> {
+    const jointOwner = await this.repository.findOne({ id });
+
+    return jointOwner;
+  }
+  async updateById(
+    id: string,
+    { name, phone, road, block, number }: ICreateJointOwnerDTO
+  ): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update()
+      .set({ name, phone, road, block, number })
+      .where("id = :id")
+      .setParameters({ id })
+      .execute();
+  }
+  async delete(id: string): Promise<void> {
+    await this.repository.delete({
+      id,
+    });
   }
 }
 
