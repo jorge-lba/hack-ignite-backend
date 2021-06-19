@@ -15,6 +15,9 @@ const finishRegisterOperatorController = new FinishRegisterOperatorController();
 accountsRoutes.post("/condominiums", createCondominiumController.handle);
 
 accountsRoutes.post("/operators", createOperatorController.handle);
-accountsRoutes.patch("/operators", finishRegisterOperatorController.handle);
+accountsRoutes.patch(
+  "/operators/:email",
+  finishRegisterOperatorController.handle
+);
 
 export { accountsRoutes };
