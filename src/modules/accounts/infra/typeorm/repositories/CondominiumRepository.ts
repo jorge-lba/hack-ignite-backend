@@ -39,6 +39,12 @@ class CondominiumRepository implements ICondominiumRepository {
     return condominium;
   }
 
+  async findOneByFirebaseId(firebase_id: string): Promise<Condominiums> {
+    const condominium = await this.repository.findOne({ firebase_id });
+
+    return condominium;
+  }
+
   async delete(condominium_id: string): Promise<void> {
     await this.repository.delete({
       id: condominium_id,

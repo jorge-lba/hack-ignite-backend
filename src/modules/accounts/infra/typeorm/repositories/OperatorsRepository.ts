@@ -22,12 +22,19 @@ class OperatorsRepository implements IOperatorsRepository {
   }
 
   async findByEmail(email: string): Promise<Operators> {
-    const operator = this.repository.findOne({
+    const operator = await this.repository.findOne({
       email,
     });
 
     return operator;
   }
+
+  async listByCondominiumId(condominium_id: string): Promise<Operators[]> {
+    const operators = await this.repository.find({ condominium_id });
+
+    return operators;
+  }
+  
   async updateByEmail(email: string, { name, firebase_id }): Promise<void> {
     await this.repository
       .createQueryBuilder()
