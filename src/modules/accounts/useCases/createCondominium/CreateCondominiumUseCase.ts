@@ -1,9 +1,15 @@
 import { inject, injectable } from "tsyringe";
 
-import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominiumDTO";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
 import { AppError } from "@shared/errors/AppError";
+
+interface IRequest {
+  name: string;
+  email: string;
+  cnpj: string;
+  firebase_id: string;
+}
 
 @injectable()
 class CreateCondominiumUseCase {
@@ -14,12 +20,7 @@ class CreateCondominiumUseCase {
     private condominiumRepository: ICondominiumRepository
   ) {}
 
-  async execute({
-    name,
-    email,
-    cnpj,
-    firebase_id,
-  }: ICreateCondominiumDTO): Promise<void> {
+  async execute({ name, email, cnpj, firebase_id }: IRequest): Promise<void> {
     const condominiumAlreadyExists =
       await this.condominiumRepository.findByEmail(email);
 
