@@ -34,6 +34,12 @@ class OperatorsRepository implements IOperatorsRepository {
 
     return operator;
   }
+
+  async findOneByFirebaseId(firebase_id: string): Promise<Operators> {
+    const operator = await this.repository.findOne({ firebase_id });
+
+    return operator;
+  }
   async listByCondominiumId(condominium_id: string): Promise<Operators[]> {
     const operators = await this.repository.find({ condominium_id });
 
