@@ -35,7 +35,7 @@ export async function ensureAuthenticated(
 
   if (!authHeader) throw new AppError("Token missing", 401);
 
-  const [, token] = authHeader.split("");
+  const [, token] = authHeader.split(" ");
 
   try {
     const { firebase_id, email } = await authTokenProvider.verifyToken(token);
