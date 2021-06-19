@@ -2,8 +2,8 @@ import { Router } from "express";
 
 import { CreateCondominiumController } from "@modules/accounts/useCases/createCondominium/CreateCondominiumController";
 import { CreateOperatorController } from "@modules/accounts/useCases/createOperator/CreateOperatorController";
-import { ListOperatorsController } from "@modules/accounts/useCases/listOperators/ListOperatorsController";
 import { FinishRegisterOperatorController } from "@modules/accounts/useCases/finishRegisterOperator/FinishRegisterOperatorController";
+import { ListOperatorsController } from "@modules/accounts/useCases/listOperators/ListOperatorsController";
 
 const accountsRoutes = Router();
 

@@ -5,7 +5,10 @@ interface IOperatorsRepository {
   create: ({ email, condominium_id }: ICreateOperatorDTO) => Promise<void>;
   findByEmail: (email: string) => Promise<Operators>;
   listByCondominiumId: (condominium_id: string) => Promise<Operators[]>;
-  updateByEmail: (email: string, { name, firebase_id }) => Promise<void>;
+  updateByEmail: (
+    email: string,
+    { name, firebase_id }: ICreateOperatorDTO
+  ) => Promise<void>;
 }
 
 export { IOperatorsRepository };
