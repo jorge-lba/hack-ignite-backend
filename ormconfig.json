@@ -1,0 +1,17 @@
+{
+  "type": "postgres",
+  "port": "5432",
+  "host": "queenie.db.elephantsql.com",
+  "username": "tgvzzbwu",
+  "password": "z0FZliFtVKGlzUCPzqk7Td3CVgoOIsDB",
+  "database": "tgvzzbwu",
+  "migrations": [
+    "./dist/shared/infra/typeorm/migrations/**.{ts,js}"
+  ],
+  "entities": [
+    "./dist/modules/*/infra/typeorm/entities/**.{ts, js}"
+  ],
+  "cli": {
+    "migrationsDir": "./dist/shared/infra/typeorm/migrations"
+  }
+}

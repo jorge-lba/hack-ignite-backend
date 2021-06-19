@@ -3,6 +3,6 @@ node_modules
 coverage
 .env
 dist
-ormconfig.json
+# ormconfig.json
 # alfred-ignite-firebase-admin.json
 yarn-error.log
