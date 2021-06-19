@@ -6,6 +6,7 @@ import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositor
 import { OperatorsRepository } from "@modules/accounts/infra/typeorm/repositories/OperatorsRepository";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
+import { FirebaseAdmin } from "./firebase/FirebaseAdmin";
 
 container.registerSingleton<IOperatorsRepository>(
   "OperatorsRepository",
@@ -16,3 +17,8 @@ container.registerSingleton<ICondominiumRepository>(
   "CondominiumRepository",
   CondominiumRepository
 );
+
+container.registerSingleton(
+  "FirebaseAdmin",
+  FirebaseAdmin
+)
