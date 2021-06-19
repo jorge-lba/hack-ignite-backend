@@ -46,14 +46,10 @@ class OperatorsRepository implements IOperatorsRepository {
     return operators;
   }
 
-<<<<<<< HEAD
   async updateByEmail(
     email: string,
     { name, firebase_id }: ICreateOperatorDTO
   ): Promise<void> {
-=======
-  async updateByEmail(email: string, { name, firebase_id }): Promise<void> {
->>>>>>> 122e93c5adc588c612ec560203efaf96661e9a29
     await this.repository
       .createQueryBuilder()
       .update()
