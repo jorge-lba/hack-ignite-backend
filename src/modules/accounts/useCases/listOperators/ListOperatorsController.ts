@@ -11,7 +11,7 @@ class ListOperatorsController {
 
     const operators = await listOperatorsUseCase.execute(firebase_id);
 
-    return response.status(201).json(operators);
+    return response.status(200).json(operators);
   }
 }
 
