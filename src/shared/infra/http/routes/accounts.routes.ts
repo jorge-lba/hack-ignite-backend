@@ -6,6 +6,7 @@ import { ListOperatorsController } from "@modules/accounts/useCases/listOperator
 import { FinishRegisterOperatorController } from "@modules/accounts/useCases/finishRegisterOperator/FinishRegisterOperatorController";
 import { DeleteOperatorController } from "@modules/accounts/useCases/deleteOperators/DeleteOperatorsController";
 import { CreateJointOwnerController } from "@modules/accounts/useCases/createJointOwner/CreateJointOwnerController";
+import { ListJointOwnersController } from "@modules/accounts/useCases/listJointOwners/ListJointOwnerController";
 
 const accountsRoutes = Router();
 
@@ -15,7 +16,7 @@ const finishRegisterOperatorController = new FinishRegisterOperatorController();
 const listOperatorsController = new ListOperatorsController();
 const deleteOperatorController = new DeleteOperatorController();
 const createJointOwnerController = new CreateJointOwnerController();
-
+const listJointOwnersController = new ListJointOwnersController();
 accountsRoutes.post("/condominiums", createCondominiumController.handle);
 
 accountsRoutes.post("/operators", createOperatorController.handle);
@@ -24,4 +25,5 @@ accountsRoutes.patch("/operators", finishRegisterOperatorController.handle);
 accountsRoutes.delete("/operators/:id", deleteOperatorController.handle);
 
 accountsRoutes.post("/jointOwners", createJointOwnerController.handle);
+accountsRoutes.get("/jointOwners", listJointOwnersController.handle);
 export { accountsRoutes };
