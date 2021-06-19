@@ -1,5 +1,4 @@
 import { config } from "dotenv";
-import admin from "firebase-admin";
 import { inject, singleton } from "tsyringe";
 
 import { IFirebaseAdmin } from "@shared/container/firebase/IFirebaseAdmin";
