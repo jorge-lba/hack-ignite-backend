@@ -6,7 +6,7 @@ import { CreateJointOwnerUseCase } from "./CreateJointOwnerUseCase";
 class CreateJointOwnerController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { firebase_id } = request.user;
-    const { name, phone, road, block, number, condominium_id } = request.body;
+    const { name, phone, road, block, number } = request.body;
 
     const createJointOwnerUseCase = container.resolve(CreateJointOwnerUseCase);
 
@@ -16,7 +16,6 @@ class CreateJointOwnerController {
       road,
       block,
       number,
-      condominium_id,
       firebase_id,
     });
 

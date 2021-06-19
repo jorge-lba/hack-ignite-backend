@@ -10,7 +10,6 @@ interface IRequest {
   road?: string;
   block?: string;
   number: number;
-  condominium_id: string;
   firebase_id: string;
 }
 
@@ -28,7 +27,6 @@ class CreateJointOwnerUseCase {
     road,
     block,
     number,
-    condominium_id,
     firebase_id,
   }: IRequest): Promise<void> {
     const isAuthenticate = await this.condominiumRepository.findOneByFirebaseId(
@@ -41,7 +39,7 @@ class CreateJointOwnerUseCase {
       phone
     );
 
-    if (!phoneAlreadyExists) {
+    if (phoneAlreadyExists) {
       throw new AppError("Phone already registered");
     }
 
