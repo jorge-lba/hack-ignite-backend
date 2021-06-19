@@ -29,16 +29,31 @@ class OperatorsRepository implements IOperatorsRepository {
     return operator;
   }
 
+  async findById(id: string): Promise<Operators> {
+    const operator = await this.repository.findOne({ id });
+
+    return operator;
+  }
+
+  async findOneByFirebaseId(firebase_id: string): Promise<Operators> {
+    const operator = await this.repository.findOne({ firebase_id });
+
+    return operator;
+  }
   async listByCondominiumId(condominium_id: string): Promise<Operators[]> {
     const operators = await this.repository.find({ condominium_id });
 
     return operators;
   }
 
+<<<<<<< HEAD
   async updateByEmail(
     email: string,
     { name, firebase_id }: ICreateOperatorDTO
   ): Promise<void> {
+=======
+  async updateByEmail(email: string, { name, firebase_id }): Promise<void> {
+>>>>>>> 122e93c5adc588c612ec560203efaf96661e9a29
     await this.repository
       .createQueryBuilder()
       .update()
@@ -46,6 +61,12 @@ class OperatorsRepository implements IOperatorsRepository {
       .where("email = :email")
       .setParameters({ email })
       .execute();
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete({
+      id,
+    });
   }
 }
 
