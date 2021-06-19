@@ -11,7 +11,7 @@ class ListJointOwnersController {
 
     const jointOwners = await listJointOwnersUseCase.execute(firebase_id);
 
-    return response.status(201).json(jointOwners);
+    return response.status(200).json(jointOwners);
   }
 }
 
