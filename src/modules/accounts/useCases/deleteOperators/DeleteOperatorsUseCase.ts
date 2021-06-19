@@ -16,7 +16,7 @@ class DeleteOperatorsUseCase {
     private operatorsRepository: IOperatorsRepository,
     @inject("CondominiumRepository")
     private condominiumsRepository: ICondominiumRepository,
-    @inject("AuthProvider")
+    @inject("FirebaseAuthProvider")
     private authProvider: IAuthProvider
   ) {}
 
