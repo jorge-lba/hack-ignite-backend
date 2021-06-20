@@ -18,7 +18,7 @@ class UpdateJointOwnerController {
       block,
       number,
     });
-    return response.status(201).send();
+    return response.status(200).send();
   }
 }
 
