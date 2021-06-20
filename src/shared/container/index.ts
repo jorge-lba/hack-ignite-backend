@@ -28,6 +28,6 @@ container.registerSingleton<IJointOwnerRepository>(
 container.registerSingleton("FirebaseAdmin", FirebaseAdmin);
 
 container.registerSingleton(
-  "CondominiumRepository",
+  "CondominiumRepositoryFirebase",
   CondominiumRepositoryFirebase
 );
