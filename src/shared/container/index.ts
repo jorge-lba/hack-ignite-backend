@@ -8,7 +8,7 @@ import { OperatorsRepository } from "@modules/accounts/infra/typeorm/repositorie
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IJointOwnerRepository } from "@modules/accounts/repositories/IJointOwnerRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
-import { CondominiumRepositoryFirebase } from "@modules/messages/infra/fireorm/repositories/CondominiumRepository";
+import { CondominiumRepositoryFirebase } from "@modules/messages/infra/fireorm/repositories/CondominiumRepositoryFirebase";
 
 import { FirebaseAdmin } from "./firebase/FirebaseAdmin";
 
