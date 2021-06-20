@@ -48,13 +48,7 @@ class JointOwnersRepository implements IJointOwnerRepository {
     return jointOwner;
   }
   async updateById(id: string, data?: ICreateJointOwnerDTO): Promise<void> {
-    await this.repository
-      .createQueryBuilder()
-      .update()
-      .set(data)
-      .where("id = :id")
-      .setParameters({ id })
-      .execute();
+    await this.repository.update({ id }, data);
   }
   async delete(id: string): Promise<void> {
     await this.repository.delete({
