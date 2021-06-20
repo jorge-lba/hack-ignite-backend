@@ -8,7 +8,10 @@ import { FinishRegisterOperatorController } from "@modules/accounts/useCases/fin
 import { ListJointOwnersController } from "@modules/accounts/useCases/listJointOwners/ListJointOwnerController";
 import { ListJointOwnersByIdController } from "@modules/accounts/useCases/listJointOwnersById/ListJointOwnersByIdController";
 import { ListOperatorsController } from "@modules/accounts/useCases/listOperators/ListOperatorsController";
+<<<<<<< HEAD
 import { UpdateJointOwnerController } from "@modules/accounts/useCases/updateJointOwner/UpdateJointOwnerController";
+=======
+>>>>>>> a96dd5ae14bcd422c2b45ef4c1918df981f71885
 
 const accountsRoutes = Router();
 

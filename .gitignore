@@ -6,3 +6,4 @@ dist
 ormconfig.json
 alfred-ignite-firebase-admin.json
 yarn-error.log
+yarn.lock

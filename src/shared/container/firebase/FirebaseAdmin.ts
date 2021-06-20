@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import admin from "firebase-admin";
+import fireorm from "fireorm";
 import { singleton } from "tsyringe";
 
 import { IFirebaseAdmin } from "./IFirebaseAdmin";
@@ -16,6 +17,7 @@ class FirebaseAdmin implements IFirebaseAdmin {
   constructor() {
     this.app = this.admin.initializeApp({
       credential: this.admin.credential.cert(this.CREDENTIAL_PATH),
+      databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
     });
   }
 
