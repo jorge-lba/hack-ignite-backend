@@ -12,13 +12,17 @@ class OperatorsRepository implements IOperatorsRepository {
     this.repository = getRepository(Operators);
   }
 
-  async create({ email, condominium_id }: ICreateOperatorDTO): Promise<void> {
+  async create({
+    email,
+    condominium_id,
+  }: ICreateOperatorDTO): Promise<Operators> {
     const operator = this.repository.create({
       email,
       condominium_id,
     });
 
-    await this.repository.save(operator);
+    const result = await this.repository.save(operator);
+    return result;
   }
 
   async findByEmail(email: string): Promise<Operators> {

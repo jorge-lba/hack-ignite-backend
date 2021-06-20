@@ -10,9 +10,9 @@ class CreateOperatorController {
 
     const createOperatorUseCase = container.resolve(CreateOperatorUseCase);
 
-    await createOperatorUseCase.execute({ email, user_email });
+    const result = await createOperatorUseCase.execute({ email, user_email });
 
-    return response.status(201).send();
+    return response.status(201).send(result);
   }
 }
 

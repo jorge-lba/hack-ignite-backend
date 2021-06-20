@@ -2,7 +2,7 @@ import { ICreateJointOwnerDTO } from "../dtos/ICreateJointOwnerDTO";
 import { JointOwners } from "../infra/typeorm/entities/JointOwners";
 
 interface IJointOwnerRepository {
-  create(data: ICreateJointOwnerDTO): Promise<void>;
+  create(data: ICreateJointOwnerDTO): Promise<JointOwners>;
   listByCondominiumId: (condominium_id: string) => Promise<JointOwners[]>;
   findById: (id: string) => Promise<JointOwners>;
   findByPhone: (phone: string) => Promise<JointOwners>;

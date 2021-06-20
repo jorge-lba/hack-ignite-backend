@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
 import { AppError } from "@shared/errors/AppError";
+import { Operators } from "@modules/accounts/infra/typeorm/entities/Operators";
 
 interface IRequest {
   user_email: string;
@@ -18,7 +19,7 @@ class CreateOperatorUseCase {
     private condominiumsRepository: ICondominiumRepository
   ) {}
 
-  async execute({ email, user_email }: IRequest): Promise<void> {
+  async execute({ email, user_email }: IRequest): Promise<Operators> {
     const operatorAlreadyExists = await this.operatorsRepository.findByEmail(
       email
     );
@@ -38,10 +39,12 @@ class CreateOperatorUseCase {
       user_email
     );
 
-    await this.operatorsRepository.create({
+    const result = await this.operatorsRepository.create({
       email,
       condominium_id: condominium.id,
     });
+
+    return result;
   }
 }
 
