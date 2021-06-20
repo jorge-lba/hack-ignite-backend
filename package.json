@@ -25,6 +25,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.12",
     "@types/node": "^15.12.2",
+    "@types/twilio": "^3.19.3",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.26.1",
@@ -56,6 +57,7 @@
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.5.0",
+    "twilio": "^3.64.0",
     "typeorm": "^0.2.34",
     "uuid": "^8.3.2"
   }
