@@ -10,7 +10,7 @@ class CreateJointOwnerController {
 
     const createJointOwnerUseCase = container.resolve(CreateJointOwnerUseCase);
 
-    await createJointOwnerUseCase.execute({
+    const result = await createJointOwnerUseCase.execute({
       name,
       phone,
       road,
@@ -19,7 +19,7 @@ class CreateJointOwnerController {
       firebase_id,
     });
 
-    return response.status(201).send();
+    return response.status(201).send(result);
   }
 }
 

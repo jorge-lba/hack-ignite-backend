@@ -41,11 +41,11 @@ class UpdateJointOwnerUseCase {
       throw new AppError("Phone already registered");
     }
     const newjointOwner = Object.assign(jointOwner, {
-      name,
-      phone,
+      name: name || jointOwner.name,
+      phone: phone || jointOwner.phone,
       road,
       block,
-      number,
+      number: number || jointOwner.number,
     });
     await this.jointOwnersRepository.updateById(id, newjointOwner);
   }

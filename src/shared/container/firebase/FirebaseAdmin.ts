@@ -1,6 +1,5 @@
 import { config } from "dotenv";
 import admin from "firebase-admin";
-import fireorm from "fireorm";
 import { singleton } from "tsyringe";
 
 import { IFirebaseAdmin } from "./IFirebaseAdmin";

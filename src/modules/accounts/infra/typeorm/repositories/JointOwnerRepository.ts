@@ -19,7 +19,7 @@ class JointOwnersRepository implements IJointOwnerRepository {
     block,
     number,
     condominium_id,
-  }: ICreateJointOwnerDTO): Promise<void> {
+  }: ICreateJointOwnerDTO): Promise<JointOwners> {
     const jointOwner = this.repository.create({
       name,
       phone,
@@ -29,7 +29,8 @@ class JointOwnersRepository implements IJointOwnerRepository {
       condominium_id,
     });
 
-    await this.repository.save(jointOwner);
+    const result = await this.repository.save(jointOwner);
+    return result;
   }
 
   async listByCondominiumId(condominium_id: string): Promise<JointOwners[]> {

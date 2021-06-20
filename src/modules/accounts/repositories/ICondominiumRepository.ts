@@ -2,7 +2,7 @@ import { ICreateCondominiumDTO } from "../dtos/ICreateCondominiumDTO";
 import { Condominiums } from "../infra/typeorm/entities/Condominiums";
 
 interface ICondominiumRepository {
-  create(data: ICreateCondominiumDTO): Promise<void>;
+  create(data: ICreateCondominiumDTO): Promise<Condominiums>;
   findAll(): Promise<Condominiums[]>;
   findByEmail(email: string): Promise<Condominiums>;
   findOneByFirebaseId(firebase_id: string): Promise<Condominiums>;
