@@ -1,6 +1,8 @@
 export class Notices {
   id: string;
+  name: string;
   body: string;
-  sender: string;
   timestamp: string;
+  apartment: string;
+  tag: string;
 }
