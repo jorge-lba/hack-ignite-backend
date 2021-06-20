@@ -12,9 +12,14 @@ class CreateCondominiumController {
       CreateCondominiumUseCase
     );
 
-    await createCondominiumUseCase.execute({ name, email, cnpj, firebase_id });
+    const result = await createCondominiumUseCase.execute({
+      name,
+      email,
+      cnpj,
+      firebase_id,
+    });
 
-    return response.status(201).send();
+    return response.status(201).send(result);
   }
 }
 
