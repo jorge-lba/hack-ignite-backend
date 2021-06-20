@@ -4,7 +4,7 @@ interface ICreateJointOwnerDTO {
   road?: string;
   block?: string;
   number: number;
-  condominium_id: string;
+  condominium_id?: string;
 }
 
 export { ICreateJointOwnerDTO };
