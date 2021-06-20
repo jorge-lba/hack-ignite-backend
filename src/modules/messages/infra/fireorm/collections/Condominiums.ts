@@ -1,5 +1,6 @@
 import { Collection, SubCollection, ISubCollection } from "fireorm";
 
+import { Notices } from "./Notices";
 import { Operators } from "./Operators";
 
 @Collection()
@@ -9,4 +10,6 @@ export class Condominiums {
 
   @SubCollection(Operators)
   operators?: ISubCollection<Operators>;
+  @SubCollection(Notices)
+  notices?: ISubCollection<Notices>;
 }

@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { Condominiums } from "@modules/accounts/infra/typeorm/entities/Condominiums";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
+import { ICondominiumRepositoryFirebase } from "@modules/messages/repositories/ICondominiumRepositoryFirebase";
 import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
@@ -18,7 +19,9 @@ class CreateCondominiumUseCase {
     @inject("OperatorsRepository")
     private operatorsRepository: IOperatorsRepository,
     @inject("CondominiumRepository")
-    private condominiumRepository: ICondominiumRepository
+    private condominiumRepository: ICondominiumRepository,
+    @inject("CondominiumRepositoryFirebase")
+    private condominiumRepositoryFirebase: ICondominiumRepositoryFirebase
   ) {}
 
   async execute({
@@ -48,6 +51,8 @@ class CreateCondominiumUseCase {
       cnpj,
       firebase_id,
     });
+
+    await this.condominiumRepositoryFirebase.create({ name, id: firebase_id });
 
     return result;
   }
