@@ -1,28 +1,29 @@
 import * as fireorm from "fireorm";
 import { BaseFirestoreRepository, getRepository } from "fireorm";
-import { injectable } from "tsyringe";
+import { inject, injectable, singleton } from "tsyringe";
 
 import { ICreateCondominiumDTO } from "@modules/messages/dtos/ICreateCondominiumDTO";
 import { ICondominiumRepository } from "@modules/messages/repositories/ICondominiumRepository";
-import { FirebaseAdmin } from "@shared/container/firebase/FirebaseAdmin";
+import { IFirebaseAdmin } from "@shared/container/firebase/IFirebaseAdmin";
 
 import { Condominiums } from "../collections/Condominiums";
 
-class CondominiumRepository implements ICondominiumRepository {
+@singleton()
+@injectable()
+class CondominiumRepositoryFirebase implements ICondominiumRepository {
   private repository: BaseFirestoreRepository<Condominiums>;
-  private firebaseadmin = new FirebaseAdmin();
 
-  constructor() {
-    this.repository = getRepository(Condominiums);
-    fireorm.initialize(this.firebaseadmin.firestore);
+  constructor(
+    @inject("FirebaseAdmin")
+    private firebaseAdmin: IFirebaseAdmin
+  ) {
+    fireorm.initialize(this.firebaseAdmin.firestore);
   }
 
   async create({ id, name }: ICreateCondominiumDTO): Promise<void> {
+    this.repository = getRepository(Condominiums);
     await this.repository.create({ id, name });
   }
 }
 
-export { CondominiumRepository };
-
-const condominium = new CondominiumRepository();
-condominium.create({ id: "uuid", name: "zé" });
+export { CondominiumRepositoryFirebase };
