@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { Condominiums } from "@modules/accounts/infra/typeorm/entities/Condominiums";
 import { ICondominiumRepository } from "@modules/accounts/repositories/ICondominiumRepository";
 import { IOperatorsRepository } from "@modules/accounts/repositories/IOperatorsRepository";
 import { AppError } from "@shared/errors/AppError";
@@ -20,13 +21,19 @@ class CreateCondominiumUseCase {
     private condominiumRepository: ICondominiumRepository
   ) {}
 
-  async execute({ name, email, cnpj, firebase_id }: IRequest): Promise<void> {
+  async execute({
+    name,
+    email,
+    cnpj,
+    firebase_id,
+  }: IRequest): Promise<Condominiums> {
     const condominiumAlreadyExists =
       await this.condominiumRepository.findByEmail(email);
 
     if (condominiumAlreadyExists) {
       throw new AppError("Condominium already exists");
     }
+
     const operatorAlreadyExists = await this.operatorsRepository.findByEmail(
       email
     );
@@ -35,12 +42,14 @@ class CreateCondominiumUseCase {
       throw new AppError("Email is being used!");
     }
 
-    await this.condominiumRepository.create({
+    const result = await this.condominiumRepository.create({
       name,
       email,
       cnpj,
       firebase_id,
     });
+
+    return result;
   }
 }
 
