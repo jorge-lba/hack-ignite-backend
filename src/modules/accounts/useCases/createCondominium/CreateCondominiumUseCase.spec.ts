@@ -3,6 +3,8 @@ import { Connection } from "typeorm";
 import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominiumDTO";
 import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositories/CondominiumRepository";
 import { OperatorsRepository } from "@modules/accounts/infra/typeorm/repositories/OperatorsRepository";
+import { CondominiumRepositoryFirebase } from "@modules/messages/infra/fireorm/repositories/CondominiumRepositoryFirebase";
+import { FirebaseAdmin } from "@shared/container/firebase/FirebaseAdmin";
 import { AppError } from "@shared/errors/AppError";
 import { connection } from "@shared/infra/typeorm/index";
 
@@ -12,15 +14,21 @@ let db: Connection;
 let operatorsRepository: OperatorsRepository;
 let condominiumRepository: CondominiumRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
+let condominiumRepositoryFirebase: CondominiumRepositoryFirebase;
+let fireBaseAdmin: FirebaseAdmin;
 describe("Create condominium", () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
     operatorsRepository = new OperatorsRepository();
     condominiumRepository = new CondominiumRepository();
+    condominiumRepositoryFirebase = new CondominiumRepositoryFirebase(
+      fireBaseAdmin
+    );
     createCondominiumUseCase = new CreateCondominiumUseCase(
       operatorsRepository,
-      condominiumRepository
+      condominiumRepository,
+      condominiumRepositoryFirebase
     );
   });
   afterAll(async () => {

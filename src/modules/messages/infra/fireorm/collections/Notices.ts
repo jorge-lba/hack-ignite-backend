@@ -6,4 +6,5 @@ export class Notices {
   timestamp: string;
   apartment: string;
   tag: string;
+  sender: string;
 }

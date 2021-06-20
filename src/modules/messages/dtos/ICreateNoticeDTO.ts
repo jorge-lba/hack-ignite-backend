@@ -6,6 +6,7 @@ interface ICreateNoticeDTO {
   timestamp: string;
   apartment: string;
   tag: string;
+  sender: string;
 }
 
 export { ICreateNoticeDTO };

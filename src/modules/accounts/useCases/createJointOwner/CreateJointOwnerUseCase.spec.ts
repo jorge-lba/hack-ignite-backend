@@ -4,6 +4,8 @@ import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominium
 import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositories/CondominiumRepository";
 import { JointOwnersRepository } from "@modules/accounts/infra/typeorm/repositories/JointOwnerRepository";
 import { OperatorsRepository } from "@modules/accounts/infra/typeorm/repositories/OperatorsRepository";
+import { CondominiumRepositoryFirebase } from "@modules/messages/infra/fireorm/repositories/CondominiumRepositoryFirebase";
+import { FirebaseAdmin } from "@shared/container/firebase/FirebaseAdmin";
 import { AppError } from "@shared/errors/AppError";
 import { connection } from "@shared/infra/typeorm/index";
 
@@ -26,6 +28,8 @@ let jointOwnersRepository: JointOwnersRepository;
 let createJointOwnerUseCase: CreateJointOwnerUseCase;
 let operatorsRepository: OperatorsRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
+let condominiumRepositoryFirebase: CondominiumRepositoryFirebase;
+let fireBaseAdmin: FirebaseAdmin;
 describe("Create JointOwner", () => {
   beforeAll(async () => {
     db = await connection();
@@ -37,9 +41,13 @@ describe("Create JointOwner", () => {
       jointOwnersRepository,
       condominiumRepository
     );
+    condominiumRepositoryFirebase = new CondominiumRepositoryFirebase(
+      fireBaseAdmin
+    );
     createCondominiumUseCase = new CreateCondominiumUseCase(
       operatorsRepository,
-      condominiumRepository
+      condominiumRepository,
+      condominiumRepositoryFirebase
     );
     const condominiumDTO: ICreateCondominiumDTO = {
       name: "example condominium 1",
