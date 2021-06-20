@@ -26,7 +26,7 @@ let jointOwnersRepository: JointOwnersRepository;
 let createJointOwnerUseCase: CreateJointOwnerUseCase;
 let operatorsRepository: OperatorsRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
-describe("Create condominium", () => {
+describe("Create JointOwner", () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
