@@ -16,14 +16,18 @@ class CondominiumRepository implements ICondominiumRepository {
     firebase_id,
     email,
     name,
-  }: ICreateCondominiumDTO): Promise<void> {
+    cnpj,
+  }: ICreateCondominiumDTO): Promise<Condominiums> {
     const condominium = this.repository.create({
+      cnpj,
       email,
       name,
       firebase_id,
     });
 
-    await this.repository.save(condominium);
+    const result = await this.repository.save(condominium);
+
+    return result;
   }
 
   async findAll(): Promise<Condominiums[]> {
