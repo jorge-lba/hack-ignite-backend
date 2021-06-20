@@ -1,5 +1,4 @@
 import { Connection } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
 
 import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominiumDTO";
 import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositories/CondominiumRepository";
@@ -33,8 +32,8 @@ describe("Create condominium", () => {
 
   it("should be able to create a new condominium", async () => {
     const condominiumDTO: ICreateCondominiumDTO = {
-      name: "example",
-      email: "example@contente.com",
+      name: "example condominium 1",
+      email: "example1@example.com",
       cnpj: "52.237.140/0001-81",
       firebase_id: "eaccf071-465f-4512-989c-0ce4d6489823",
     };
@@ -48,16 +47,16 @@ describe("Create condominium", () => {
   it("should  not be able create a new condominium with an already used email", async () => {
     await expect(async () => {
       await createCondominiumUseCase.execute({
-        name: "vila contente",
-        email: "vila@contente.com",
-        cnpj: "52.237.140/0001-81",
-        firebase_id: "eaccf071-465f-4512-989c-0ce4d6489823",
+        name: "example condominium2",
+        email: "example2@example.com",
+        cnpj: "52.237.140/4401-81",
+        firebase_id: "eaccf071-465f-4512-989c-0ce4d6489213",
       });
       await createCondominiumUseCase.execute({
-        name: "vila contente",
-        email: "vila@contente.com",
-        cnpj: "52.237.140/0001-81",
-        firebase_id: "eaccf071-465f-4512-989c-0ce4d6489823",
+        name: "example condominium3",
+        email: "example2@example.com",
+        cnpj: "52.237.140/0021-13",
+        firebase_id: "eaccf071-765f-4512-989c-0ce4d6489823",
       });
     }).rejects.toBeInstanceOf(AppError);
   });
