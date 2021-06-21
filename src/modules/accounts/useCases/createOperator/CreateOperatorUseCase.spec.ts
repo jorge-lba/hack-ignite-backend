@@ -1,4 +1,5 @@
 import { Connection } from "typeorm";
+import { v4 as uuid } from "uuid";
 
 import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominiumDTO";
 import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositories/CondominiumRepository";
@@ -46,7 +47,7 @@ describe("Create Operator", () => {
       name: "example condominium 1",
       email: "admin@example.com",
       cnpj: "52.237.140/0001-81",
-      firebase_id: "eaccf071-465f-4512-989c-0ce4d6489897",
+      firebase_id: uuid(),
     };
     await createCondominiumUseCase.execute(condominiumDTO);
   });
