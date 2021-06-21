@@ -3,7 +3,7 @@ export class Notices {
   user_id: string;
   name: string;
   body: string;
-  timestamp: string;
+  timestamp: number;
   apartment: string;
   tag: string;
   sender: string;

@@ -52,7 +52,7 @@ class CreateCondominiumUseCase {
       firebase_id,
     });
 
-    await this.condominiumRepositoryFirebase.create({ name, id: firebase_id });
+    await this.condominiumRepositoryFirebase.create({ name, id: result.id });
 
     return result;
   }
