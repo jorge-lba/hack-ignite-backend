@@ -1,4 +1,6 @@
+import "reflect-metadata";
 import { Connection } from "typeorm";
+import { v4 as uuid } from "uuid";
 
 import { ICreateCondominiumDTO } from "@modules/accounts/dtos/ICreateCondominiumDTO";
 import { CondominiumRepository } from "@modules/accounts/infra/typeorm/repositories/CondominiumRepository";
@@ -15,15 +17,16 @@ let operatorsRepository: OperatorsRepository;
 let condominiumRepository: CondominiumRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
 let condominiumRepositoryFirebase: CondominiumRepositoryFirebase;
-let fireBaseAdmin: FirebaseAdmin;
+
 describe("Create condominium", () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
+
     operatorsRepository = new OperatorsRepository();
     condominiumRepository = new CondominiumRepository();
     condominiumRepositoryFirebase = new CondominiumRepositoryFirebase(
-      fireBaseAdmin
+      new FirebaseAdmin()
     );
     createCondominiumUseCase = new CreateCondominiumUseCase(
       operatorsRepository,
@@ -43,8 +46,12 @@ describe("Create condominium", () => {
       name: "example condominium 1",
       email: "example1@example.com",
       cnpj: "52.237.140/0001-81",
-      firebase_id: "eaccf071-465f-4512-989c-0ce4d6489823",
+      firebase_id: uuid(),
     };
+    const createCondominiumUseCaseSpyOn = jest.spyOn(
+      condominiumRepositoryFirebase,
+      "create"
+    );
     const condominium = await createCondominiumUseCase.execute(condominiumDTO);
     expect(condominium).toHaveProperty("name");
     expect(condominium).toHaveProperty("email");

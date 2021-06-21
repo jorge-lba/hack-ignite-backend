@@ -29,7 +29,7 @@ let createJointOwnerUseCase: CreateJointOwnerUseCase;
 let operatorsRepository: OperatorsRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
 let condominiumRepositoryFirebase: CondominiumRepositoryFirebase;
-let fireBaseAdmin: FirebaseAdmin;
+
 describe("Create JointOwner", () => {
   beforeAll(async () => {
     db = await connection();
@@ -42,7 +42,7 @@ describe("Create JointOwner", () => {
       condominiumRepository
     );
     condominiumRepositoryFirebase = new CondominiumRepositoryFirebase(
-      fireBaseAdmin
+      new FirebaseAdmin()
     );
     createCondominiumUseCase = new CreateCondominiumUseCase(
       operatorsRepository,

@@ -22,7 +22,7 @@ let operatorsRepository: OperatorsRepository;
 let createCondominiumUseCase: CreateCondominiumUseCase;
 let createOperatorUseCase: CreateOperatorUseCase;
 let condominiumRepositoryFirebase: CondominiumRepositoryFirebase;
-let fireBaseAdmin: FirebaseAdmin;
+
 describe("Create Operator", () => {
   beforeAll(async () => {
     db = await connection();
@@ -30,7 +30,7 @@ describe("Create Operator", () => {
     condominiumRepository = new CondominiumRepository();
     operatorsRepository = new OperatorsRepository();
     condominiumRepositoryFirebase = new CondominiumRepositoryFirebase(
-      fireBaseAdmin
+      new FirebaseAdmin()
     );
     createCondominiumUseCase = new CreateCondominiumUseCase(
       operatorsRepository,
@@ -46,7 +46,7 @@ describe("Create Operator", () => {
       name: "example condominium 1",
       email: "admin@example.com",
       cnpj: "52.237.140/0001-81",
-      firebase_id: "eaccf071-465f-4512-989c-0ce4d6489823",
+      firebase_id: "eaccf071-465f-4512-989c-0ce4d6489897",
     };
     await createCondominiumUseCase.execute(condominiumDTO);
   });
