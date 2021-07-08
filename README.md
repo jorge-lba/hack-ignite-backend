@@ -1,7 +1,7 @@
 <h1 align="center">Alfred Code/Station Hackathon 2021</h1>
 
 <div align="center">
-<img src="https://imgseed.xyz/img/1624223085570c322.png" align="center">
+<img src="https://i.postimg.cc/J0sJzLgm/Logo-1.png" align="center">
 </div>
 <div align="center">
  <img alt="GitHub contagem de linguagens" src="https://img.shields.io/github/languages/count/jorge-lba/hack-ignite-backend?color=%2304D361&style=plastic">
@@ -123,5 +123,5 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 # Contatos
 
-| [<img src="https://avatars.githubusercontent.com/u/56704254?v=4" width="115"><br><small>@jorge-lba</small>](https://github.com/inglyd) | [<img src="https://avatars.githubusercontent.com/u/7527839?v=4" width="115"><br><sub>@LevyAM</sub>](https://github.com/WelissonLuca) | [<img src="https://avatars.githubusercontent.com/u/62263143?v=4" width="115"><br><sub>@WelissonLuca</sub>](https://github.com/WelissonLuca) |
+| [<img src="https://avatars.githubusercontent.com/u/56704254?v=4" width="115"><br><small>@jorge-lba</small>](https://github.com/jorge-lba) | [<img src="https://avatars.githubusercontent.com/u/7527839?v=4" width="115"><br><sub>@LevyAM</sub>](https://github.com/LevyAM) | [<img src="https://avatars.githubusercontent.com/u/62263143?v=4" width="115"><br><sub>@WelissonLuca</sub>](https://github.com/WelissonLuca) |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
